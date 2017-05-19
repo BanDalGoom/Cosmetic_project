@@ -43,6 +43,6 @@ public class CosmeticDTO {
 		this.company = company;
 	}
 	
-	
+	세환아 이거 참 어렵구나
 
 }
