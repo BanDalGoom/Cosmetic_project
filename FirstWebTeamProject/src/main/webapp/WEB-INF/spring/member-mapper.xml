@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http:mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	
+	<insert id="insertMember" parameterType="membervo">
+		<selectKey keyProperty="num" resultType="int" order="BEFORE">
+			select member_sequence.nextval from dual
+		</selectKey>
+		insert into member values (#{num}, #{email}, #{password}, #{name}, #{phone}, #{admin}, sysdate)
+	</insert>
+	
+	<select id="checkID" resultType="String" parameterType="String">
+		select email from member where email = #{email}
+	</select>
+	
+	<select id="checkPassword" resultType="String" parameterType="String">
+		select password from member where password = #{password}
+	</select>
+	
+	<select id="getMembervo" resultType="membervo" parameterType="membervo">
+		select * from member where email = #{email}
+	</select>
+	
+</mapper>
+	
